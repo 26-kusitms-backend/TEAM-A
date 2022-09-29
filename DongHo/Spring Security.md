@@ -8,6 +8,31 @@
 ### Spring Security 구조
 ![img1 daumcdn](https://user-images.githubusercontent.com/92728780/192766205-03702022-301e-4bb5-9944-2890f84f08cc.png)
 
+```
+동작 플로우
+
+1. Http Request : 사용자가 로그인 정보와 함께 인증을 요청한다.
+
+2. AuthenticationFilter가 요청을 가로 챈다. 가로친 정보를 바탕으로 UsernamePasswordAuthenticationToken 객체를 생성한다.
+
+3. AuthenticationFilter가 AuthenticationManger의 구현체인 ProviderManager에게 토큰 (UsernamePasswordAuthenticationToken)을 전달한다.
+
+4. 다시 AuthenticationProvider에 UsernamePasswordAuthenticationToken 객체를 전달합니다.
+
+5. AuthenticationProvider가 실제 데이터베이스에서 사용자 인증정보를 가져오는 UserDetailsService에 사용자 정보(아이디)를 넘겨줍니다.
+
+6. 넘겨받은 사용자 정보를 통해 DB에서 찾은 사용자 정보인 UserDetails 객체를 만듭니다.
+
+7. AuthenticationProvider(인증 제공자) 는 UserDetails를 넘겨받고 사용자 정보를 비교합니다.
+
+8. 인증이 완료되면 권한 등의 사용자 정보를 담은 Authentication 객체를 반환합니다. (인증 제공자 -> 인증 관리자)
+
+9. AuthenticationFilter에 Authentication 객체가 반환됩니다. 
+
+10. Authentication 객체를 SecurityContext에 저장합니다
+```
+[Spring Security 흐름](https://seongbindb.tistory.com/169)
+
 <br/>
 
 ### Spring Security 동작 원리
