@@ -38,7 +38,6 @@
 ### Spring Security 동작 원리
 * Spring Security는 기본적으로 세션 - 쿠키 방식 사용
 
-
 ![008i3skNgy1gq0pikfvdbj30ge0bxq37](https://user-images.githubusercontent.com/92728780/192767744-2bb4753b-36b4-4f30-b7ca-f4f9fa282fcc.jpg)
 
 ```
@@ -57,3 +56,36 @@
 7. 사용자에게 맞는 데이터를 넘겨줍니다.
 ```
 [Spring security 동작 원리 (인증,인가) 에 대한 자세한 설명](https://k3068.tistory.com/88?category=948029)
+
+<br/>
+
+### Spring Security + JWT
+
+* JWT 구현 예제
+
+[JWT를 사용한 로그인 및 Refresh Token을 활용한 로그인 상태 유지](https://hungseong.tistory.com/67)
+
+```
+Question
+
+- refresh token 을 쿠키와 db 중 어디에 두어야 할까
+
+- access token 검증이 일어난 후, refresh token 검증 로직과 refresh token 재발급 로직이 있는 위치 (서비스, 필터)
+```
+
+<br/>
+
+* JWT 구현과정에서 보면 커스텀 필터를 작성하여 UsernamePasswordAuthenticationFilter 앞에 등록하곤 한다.
+그 이유는 UsernamePasswordAuthenticationFilter 에서는 Authentication 객체가 존재 여부를 검사하고 넘어가는데, 
+커스텀필터에서 인증 성공시 Authentication 객체가 생성되므로 UsernamePasswordAuthenticationFilter 내부 로직을 타지 않고 통과시키기 때문이다.
+
+```
+Question
+
+- 인증 로직은 UsernamePasswordAuthenticationFilter 에서 처리하고 토큰 관련 필터를 추가해주면 안되는건가?
+=> 결국에는 토큰 관련 필터와 로그인시 인증관련 필터 두 가지 다 만들어줘야 한다고 생각.
+
+- 인증 실패시에는 UsernamePasswordAuthenticationFilter 로직을 타는건가?
+```
+
+출처: https://sunghs.tistory.com/151
