@@ -10,8 +10,8 @@
 <br>
 
 ## Week 2
-- 도커
-- 배포
+- [도커](https://github.com/26-kusitms-backend/TEAM-A/blob/jaejlf/JaeJeong/%EB%8F%84%EC%BB%A4.md)
+- [배포](https://github.com/26-kusitms-backend/TEAM-A/blob/jaejlf/JaeJeong/%EB%B0%B0%ED%8F%AC.md)
 
 <br>
 
