@@ -86,4 +86,3 @@ JDBC 트랜잭션에 의존하다가 JPA 기술로 변경하게 되면 서비스
 결과적으로 우리는 추가적인 설정없이 @Transactional 설정만으로 트랜잭션 관리가 가능한 것이다.
 
 [@Transactional의 동작 방식](https://cantcoding.tistory.com/88)
-
