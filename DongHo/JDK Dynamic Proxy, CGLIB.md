@@ -217,8 +217,8 @@ public class CglibTest {
 
 > 남은 문제
 > 
-> 현재로써는 두 기술을 함께 사용하여 부가 기능을 제공하기 위해서 JDK 동적 프록시가 제공하는 InvocationHandler 와 CGLIB가 제공하는 MethodInterceptor 를 각각 중복으로 만들어야
-> 한다.
+> 현재로써는 두 기술을 함께 사용하여 부가 기능을 제공하기 위해서는, 
+> 클래스의 인터페이스 구현 유무에 따라 JDK 동적 프록시가 제공하는 InvocationHandler 와 CGLIB가 제공하는 MethodInterceptor 를 각각 만들어 줘야 한다.
 
 <br/>
 
@@ -354,6 +354,14 @@ public class PackageLogTraceProxyPostProcessor implements BeanPostProcessor {
 이 빈 후처리기는 스프링 빈으로 등록된 Advisor 들을 자동으로 찾아서 프록시가 필요한 곳에 자동으로 프록시를 적용해준다
 
 ![자동 프록시 생성기](https://user-images.githubusercontent.com/92728780/198859120-3fb37ad2-74d6-409f-a4d7-076f62cb49e0.JPG)
+
+<br/>
+빈 후처리기를 통해 
+
+1. 너무 많은 설정 - 프록시를 적용하고자 하는 클래스마다 관련 설정을 해주어야 함
+2. 컴포넌트 스캔 사용 시, 프록시 적용 
+
+두 가지의 문제를 해결 할 수 있었다.
 
 <br/>
 
